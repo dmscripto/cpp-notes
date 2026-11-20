@@ -5,7 +5,8 @@ description: One sentence about the algorithm (used in search results and link p
 <!--
   Template for a page in docs/algorithms-library/. Copy it to
   docs/algorithms-library/<name>.md, make the name a link in the table on
-  docs/algorithms-library/index.md, and put the examples into
+  docs/algorithms-library/index.md, add the page to `nav` in zensical.toml
+  under its category, and put the examples into
   code/algorithm/<name>/cpp17.cpp, cpp20.cpp and cpp26.cpp: complete programs
   whose shown part is wrapped in // --8<-- [start:example] ... [end:example],
   followed by asserts that check the comments. Copy an existing one, e.g.

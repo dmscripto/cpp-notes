@@ -52,10 +52,9 @@ Run the preview server with live reload, then open <http://localhost:8000/cpp-no
 
 3. Add tests in `code/<section>/<name>_test.cpp` (a `main` that returns non-zero on failure).
 
-The navigation is generated from the folder structure, so new pages show up
-automatically. A folder's `index.md` becomes the section's overview page, and
-the folder name becomes the section title (`algorithms-library` →
-"Algorithms library").
+4. Add the page to `nav` in `zensical.toml`. A bare path takes its title from
+   the page's H1. The first page of a section is the section's overview.
+   Restart `zensical serve` after editing `zensical.toml`.
 
 ## Add a page to the algorithms library
 
@@ -67,6 +66,10 @@ the folder name becomes the section title (`algorithms-library` →
    after it. Each file is compiled with the standard in its name.
 3. Turn the algorithm's name into a link in the table on
    `docs/algorithms-library/index.md`.
+4. Add the page to `nav` in `zensical.toml`, under its category ("Non-modifying",
+   "Modifying", "Sorting and related", ...; the same as the sections of the
+   overview). Add the category if it is not there yet. Files stay flat in
+   `docs/algorithms-library/`; the grouping exists only in `nav`.
 
 Mark standards with badges: `<span class="std cpp20">C++20</span>` (classes
 `cpp98`, `cpp11`, `cpp14`, `cpp17`, `cpp20`, `cpp23`, `cpp26`).

@@ -62,9 +62,12 @@ standard algorithm and an overview `index.md` listing every algorithm.
 - **Badges.** Standards are marked with `<span class="std cpp20">C++20</span>`
   (`docs/stylesheets/std.css`).
 - **Overview tables** sit inside `<div class="std-index" markdown>`, which gives
-  them aligned columns. Algorithms that have a page are links there. Adding a
-  page means: copy `templates/algorithm.md`, add the three example files, and
-  link the name in the overview.
+  them aligned columns. Algorithms that have a page are links there.
+- **Adding a page** means:
+  1. copy `templates/algorithm.md`;
+  2. add the three example files;
+  3. link the name in the overview;
+  4. add the page to `nav` under its category.
 
 **CI gates the deploy on the tests.** `.github/workflows/docs.yml` runs
 `test-code` and then `deploy` (build + upload to Pages) on pushes to `main`; pull
@@ -72,11 +75,31 @@ requests only run the tests. Re-running a failed `deploy` job fails with
 "No artifacts named github-pages"; start a fresh run instead with
 `gh workflow run docs.yml --ref main`.
 
-**Navigation comes from the folder structure.** There is no `nav` in
-`zensical.toml`; a folder's `index.md` is its section overview. The section title
-in the nav comes from the folder name, not from the index page's H1:
-`algorithms-library` becomes "Algorithms library". New articles start from
-`templates/article.md`, which sits outside `docs/` so it is not published.
+**Navigation is explicit: every new page must be added to `nav` in
+`zensical.toml`.** Auto-generated navigation was dropped because it has two
+problems: it sorts alphabetically, and it builds titles from folder names,
+which mangles them (`non-modifying` becomes "Non modifying").
+- A bare path in `nav` takes its title from the page's H1. The first page of a
+  section is its overview, and the section title links to it
+  (`navigation.indexes`).
+- Algorithm pages are grouped in `nav` by category, in cppreference order. The
+  categories match the H2 sections of `docs/algorithms-library/index.md`. The
+  groups exist only in `nav`: the files stay flat in `docs/algorithms-library/`,
+  so regrouping never changes URLs.
+- `zensical serve` does not reload `zensical.toml`, so restart it after editing.
+
+New articles start from `templates/article.md`, which sits outside `docs/` so it
+is not published.
+
+**Sidebars are restyled for long lists** in `docs/stylesheets/sidebars.css`:
+- on desktop, top-level sections are small uppercase labels;
+- expanded categories and nested table-of-contents entries have a guide line;
+- the table of contents uses a smaller, muted font, and `toc.follow` keeps the
+  current heading in view;
+- the scrollbars no longer turn accent-colored on hover.
+
+A section's container `div` also has the `md-nav__link` class, so rules for
+links must exclude `.md-nav__container`, or the section label gets padded twice.
 
 **Instant navigation swaps pages without a reload.** Custom scripts must
 (re)initialize through `document$.subscribe(...)`, not `DOMContentLoaded`. Both

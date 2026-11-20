@@ -1,0 +1,97 @@
+/* Left navigation and right table of contents, made to stay readable with
+   many entries. Theme values are noted in the comments. */
+
+/* ---------- Left: site navigation ---------- */
+
+.md-nav--primary {
+  font-size: 0.68rem; /* theme: 0.7rem */
+}
+
+.md-nav--primary .md-nav__list {
+  gap: 0.1rem; /* theme: 0.2rem */
+}
+
+/* Not the container that wraps a section's link and toggle: it carries the
+   same class, but its own padding must stay 0. */
+.md-nav--primary .md-nav__link:not(.md-nav__container) {
+  padding: 0.28rem 0.6rem; /* theme: 0.35rem 0.8rem */
+}
+
+.md-nav--primary .md-nav__icon {
+  opacity: 0.6;
+}
+
+/* Expanded groups (e.g. "Non-modifying") get a guide line on the left, so
+   it is clear which pages belong to them. */
+.md-nav--primary .md-nav__item--nested:not(.md-nav__item--section) > .md-nav > .md-nav__list {
+  margin-left: 0.9rem; /* theme: 0.6rem */
+  border-left: 0.05rem solid var(--md-default-fg-color--lightest);
+}
+
+@media screen and (min-width: 76.25em) {
+  /* Top-level sections ("Sorting", "Algorithms library") are shown as small
+     labels above their pages, not as items. They still link to the
+     section's overview page. */
+  .md-nav--primary > .md-nav__list > .md-nav__item--section {
+    margin-top: 1.2rem; /* theme: 0.4rem */
+  }
+
+  .md-nav--primary > .md-nav__list > .md-nav__item--section > .md-nav__link,
+  .md-nav--primary > .md-nav__list > .md-nav__item--section > .md-nav__container > .md-nav__link:first-child {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .md-nav--primary > .md-nav__list > .md-nav__item--section > .md-nav__container > .md-nav__link:first-child:not(.md-nav__link--active) {
+    color: var(--md-default-fg-color--light);
+  }
+}
+
+/* ---------- Right: table of contents ---------- */
+
+.md-nav--secondary {
+  font-size: 0.65rem; /* theme: 0.7rem */
+}
+
+.md-nav--secondary .md-nav__title {
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--md-default-fg-color--light);
+}
+
+.md-nav--secondary .md-nav__list {
+  gap: 0; /* theme: 0.2rem */
+}
+
+.md-nav--secondary .md-nav__link {
+  padding: 0.18rem 0.6rem; /* theme: 0.2rem 0.6rem */
+  color: var(--md-default-fg-color--light);
+}
+
+.md-nav--secondary .md-nav__link--active {
+  color: var(--md-accent-fg-color);
+}
+
+/* Subheadings: indented under a guide line. */
+.md-nav--secondary .md-nav {
+  margin-top: 0; /* theme: 0.2rem */
+}
+
+.md-nav--secondary .md-nav .md-nav__list {
+  margin-left: 0.8rem;
+  border-left: 0.05rem solid var(--md-default-fg-color--lightest);
+}
+
+/* ---------- Scrollbars ---------- */
+
+/* The theme turns the sidebar scrollbars accent-colored on hover; keep them
+   quiet so a long table of contents does not get a bright bar. */
+.md-sidebar__scrollwrap:hover,
+.md-sidebar__scrollwrap:focus-within,
+.md-sidebar--secondary .md-sidebar__inner:hover,
+.md-sidebar--secondary .md-sidebar__inner:focus-within {
+  scrollbar-color: var(--md-default-fg-color--lighter) #0000;
+}

@@ -32,16 +32,16 @@ are links; for the rest see [cppreference](https://en.cppreference.com/w/cpp/alg
 <!-- The wrapper gives all tables below the same column widths. -->
 <div class="std-index" markdown>
 
-## Non-modifying sequence operations
+## Non-modifying
 
-### Batch operations
+### Batch
 
 | Algorithm    | What it does                              | `std::`                              | `std::ranges::`                      |
 | ------------ | ----------------------------------------- | ------------------------------------ | ------------------------------------ |
 | `for_each`   | Calls a function on every element         | <span class="std cpp98">C++98</span> | <span class="std cpp20">C++20</span> |
 | `for_each_n` | Calls a function on the first $n$ elements | <span class="std cpp17">C++17</span> | <span class="std cpp20">C++20</span> |
 
-### Search operations
+### Search
 
 | Algorithm                                      | What it does                                            | `std::`                              | `std::ranges::`                      |
 | ---------------------------------------------- | ------------------------------------------------------- | ------------------------------------ | ------------------------------------ |
@@ -60,7 +60,7 @@ are links; for the rest see [cppreference](https://en.cppreference.com/w/cpp/alg
 | `contains`, `contains_subrange`                | Whether a value or a subsequence is in the range        | —                                    | <span class="std cpp23">C++23</span> |
 | `starts_with`, `ends_with`                     | Whether a range begins or ends with another one         | —                                    | <span class="std cpp23">C++23</span> |
 
-### Fold operations
+### Fold
 
 The ranges replacement for `std::accumulate`.
 
@@ -70,9 +70,9 @@ The ranges replacement for `std::accumulate`.
 | `fold_left_first`, `fold_right_last`         | Same, starting from the first or the last element      | —       | <span class="std cpp23">C++23</span> |
 | `fold_left_with_iter`, `fold_left_first_with_iter` | Same as the left folds, also returns the end iterator | — | <span class="std cpp23">C++23</span> |
 
-## Modifying sequence operations
+## Modifying
 
-### Copy operations
+### Copy
 
 | Algorithm       | What it does                                         | `std::`                              | `std::ranges::`                      |
 | --------------- | ---------------------------------------------------- | ------------------------------------ | ------------------------------------ |
@@ -83,7 +83,7 @@ The ranges replacement for `std::accumulate`.
 | `move`          | Moves elements to another range                      | <span class="std cpp11">C++11</span> | <span class="std cpp20">C++20</span> |
 | `move_backward` | Moves from back to front, for overlapping ranges     | <span class="std cpp11">C++11</span> | <span class="std cpp20">C++20</span> |
 
-### Swap operations
+### Swap
 
 | Algorithm     | What it does                                                | `std::`                              | `std::ranges::`                      |
 | ------------- | ----------------------------------------------------------- | ------------------------------------ | ------------------------------------ |
@@ -91,7 +91,7 @@ The ranges replacement for `std::accumulate`.
 | `swap_ranges` | Swaps the elements of two ranges                            | <span class="std cpp98">C++98</span> | <span class="std cpp20">C++20</span> |
 | `iter_swap`   | Swaps the elements that two iterators point to              | <span class="std cpp98">C++98</span> | —                                    |
 
-### Transformation operations
+### Transformation
 
 | Algorithm                       | What it does                                         | `std::`                              | `std::ranges::`                      |
 | ------------------------------- | ---------------------------------------------------- | ------------------------------------ | ------------------------------------ |
@@ -99,7 +99,7 @@ The ranges replacement for `std::accumulate`.
 | `replace`, `replace_if`         | Replaces matching elements in place                  | <span class="std cpp98">C++98</span> | <span class="std cpp20">C++20</span> |
 | `replace_copy`, `replace_copy_if` | Copies a range, replacing matching elements        | <span class="std cpp98">C++98</span> | <span class="std cpp20">C++20</span> |
 
-### Generation operations
+### Generation
 
 | Algorithm    | What it does                                     | `std::`                              | `std::ranges::`                      |
 | ------------ | ------------------------------------------------ | ------------------------------------ | ------------------------------------ |
@@ -108,7 +108,7 @@ The ranges replacement for `std::accumulate`.
 | `generate`   | Assigns the results of successive function calls | <span class="std cpp98">C++98</span> | <span class="std cpp20">C++20</span> |
 | `generate_n` | Same for $n$ elements                            | <span class="std cpp98">C++98</span> | <span class="std cpp20">C++20</span> |
 
-### Removing operations
+### Removing
 
 | Algorithm                       | What it does                                                       | `std::`                              | `std::ranges::`                      |
 | ------------------------------- | ------------------------------------------------------------------ | ------------------------------------ | ------------------------------------ |
@@ -117,7 +117,7 @@ The ranges replacement for `std::accumulate`.
 | `unique`                        | Removes consecutive duplicates; pair it with `erase`               | <span class="std cpp98">C++98</span> | <span class="std cpp20">C++20</span> |
 | `unique_copy`                   | Copies a range without consecutive duplicates                      | <span class="std cpp98">C++98</span> | <span class="std cpp20">C++20</span> |
 
-### Order-changing operations
+### Order-changing
 
 | Algorithm                    | What it does                                               | `std::`                                                                         | `std::ranges::`                      |
 | ---------------------------- | ---------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------ |
@@ -129,15 +129,15 @@ The ranges replacement for `std::accumulate`.
 | `shuffle`                    | Random permutation with a given random generator           | <span class="std cpp11">C++11</span>                                            | <span class="std cpp20">C++20</span> |
 | `random_shuffle`             | Random permutation; replaced by `shuffle`                  | <span class="std cpp98">C++98</span> <span class="std removed">removed in C++17</span> | —                              |
 
-### Sampling operations
+### Sampling
 
 | Algorithm | What it does                     | `std::`                              | `std::ranges::`                      |
 | --------- | -------------------------------- | ------------------------------------ | ------------------------------------ |
 | `sample`  | Picks $n$ random elements        | <span class="std cpp17">C++17</span> | <span class="std cpp20">C++20</span> |
 
-## Sorting and related operations
+## Sorting and related
 
-### Partitioning operations
+### Partitioning
 
 | Algorithm          | What it does                                                     | `std::`                              | `std::ranges::`                      |
 | ------------------ | ---------------------------------------------------------------- | ------------------------------------ | ------------------------------------ |
@@ -147,7 +147,7 @@ The ranges replacement for `std::accumulate`.
 | `stable_partition` | Like `partition`, keeps the relative order                       | <span class="std cpp98">C++98</span> | <span class="std cpp20">C++20</span> |
 | `partition_point`  | Finds the end of the first group in a partitioned range          | <span class="std cpp11">C++11</span> | <span class="std cpp20">C++20</span> |
 
-### Sorting operations
+### Sorting
 
 | Algorithm             | What it does                                                   | `std::`                              | `std::ranges::`                      |
 | --------------------- | -------------------------------------------------------------- | ------------------------------------ | ------------------------------------ |
@@ -159,7 +159,7 @@ The ranges replacement for `std::accumulate`.
 | `is_sorted_until`     | Finds where the sorted prefix ends                             | <span class="std cpp11">C++11</span> | <span class="std cpp20">C++20</span> |
 | `nth_element`         | Puts the $n$-th element in place, smaller ones before it       | <span class="std cpp98">C++98</span> | <span class="std cpp20">C++20</span> |
 
-### Binary search operations
+### Binary search
 
 On sorted (more precisely, partitioned) ranges, in $O(\log N)$.
 
@@ -182,7 +182,7 @@ On sorted ranges.
 | `set_difference`           | Elements of the first range not in the second       | <span class="std cpp98">C++98</span> | <span class="std cpp20">C++20</span> |
 | `set_symmetric_difference` | Elements that are in exactly one of the ranges      | <span class="std cpp98">C++98</span> | <span class="std cpp20">C++20</span> |
 
-### Merge operations
+### Merge
 
 On sorted ranges.
 
@@ -191,7 +191,7 @@ On sorted ranges.
 | `merge`         | Merges two sorted ranges into a third                | <span class="std cpp98">C++98</span> | <span class="std cpp20">C++20</span> |
 | `inplace_merge` | Merges two consecutive sorted parts of one range     | <span class="std cpp98">C++98</span> | <span class="std cpp20">C++20</span> |
 
-### Heap operations
+### Heap
 
 | Algorithm       | What it does                                         | `std::`                              | `std::ranges::`                      |
 | --------------- | ---------------------------------------------------- | ------------------------------------ | ------------------------------------ |
@@ -202,7 +202,7 @@ On sorted ranges.
 | `is_heap`       | Whether a range is a max-heap                        | <span class="std cpp11">C++11</span> | <span class="std cpp20">C++20</span> |
 | `is_heap_until` | Finds where the heap prefix ends                     | <span class="std cpp11">C++11</span> | <span class="std cpp20">C++20</span> |
 
-### Minimum and maximum operations
+### Min and max
 
 | Algorithm                    | What it does                                     | `std::`                              | `std::ranges::`                      |
 | ---------------------------- | ------------------------------------------------ | ------------------------------------ | ------------------------------------ |
@@ -212,21 +212,21 @@ On sorted ranges.
 | `minmax_element`             | Both at once                                     | <span class="std cpp11">C++11</span> | <span class="std cpp20">C++20</span> |
 | `clamp`                      | Limits a value to a range                        | <span class="std cpp17">C++17</span> | <span class="std cpp20">C++20</span> |
 
-### Comparison operations
+### Comparison
 
 | Algorithm                           | What it does                                         | `std::`                              | `std::ranges::`                      |
 | ----------------------------------- | ---------------------------------------------------- | ------------------------------------ | ------------------------------------ |
 | `lexicographical_compare`           | Whether one range is less than another, like strings | <span class="std cpp98">C++98</span> | <span class="std cpp20">C++20</span> |
 | `lexicographical_compare_three_way` | Same with `<=>`: less, equal or greater              | <span class="std cpp20">C++20</span> | —                                    |
 
-### Permutation operations
+### Permutation
 
 | Algorithm                              | What it does                                        | `std::`                              | `std::ranges::`                      |
 | -------------------------------------- | --------------------------------------------------- | ------------------------------------ | ------------------------------------ |
 | `next_permutation`, `prev_permutation` | Next or previous permutation in lexicographic order | <span class="std cpp98">C++98</span> | <span class="std cpp20">C++20</span> |
 | `is_permutation`                       | Whether one range is a permutation of another       | <span class="std cpp11">C++11</span> | <span class="std cpp20">C++20</span> |
 
-## Numeric operations
+## Numeric
 
 Header `<numeric>`. Except `iota`, these have no `std::ranges::` version; use
 `std::ranges::fold_left` instead of `accumulate`.
@@ -243,7 +243,7 @@ Header `<numeric>`. Except `iota`, these have no `std::ranges::` version; use
 | `inclusive_scan`, `exclusive_scan`                     | Prefix sums that can run in parallel                            | <span class="std cpp17">C++17</span> | —                                    |
 | `transform_inclusive_scan`, `transform_exclusive_scan` | Transforms, then scans                                          | <span class="std cpp17">C++17</span> | —                                    |
 
-## Operations on uninitialized memory
+## Uninitialized memory
 
 Header `<memory>`. For code that manages raw storage itself, such as a
 container.
@@ -260,7 +260,7 @@ container.
 | `uninitialized_default_construct`, `uninitialized_default_construct_n` | Default-initializes objects in raw memory         | <span class="std cpp17">C++17</span> | <span class="std cpp20">C++20</span> |
 | `uninitialized_value_construct`, `uninitialized_value_construct_n`   | Value-initializes objects in raw memory             | <span class="std cpp17">C++17</span> | <span class="std cpp20">C++20</span> |
 
-## Random number generation
+## Random numbers
 
 Header `<random>`.
 

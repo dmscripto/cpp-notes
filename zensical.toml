@@ -6,12 +6,32 @@ site_url = "https://dmscripto.github.io/cpp-notes/"
 repo_url = "https://github.com/dmscripto/cpp-notes"
 repo_name = "cpp-notes"
 
-# No `nav` here on purpose: the navigation is built from the folder
-# structure of docs/. Add an explicit `nav = [...]` if you want a custom order.
+# Navigation. Every new page must be added here. A bare path takes its title
+# from the page's H1; the first page of a section is its overview (section
+# title links to it). Algorithm pages are grouped like the sections of
+# docs/algorithms-library/index.md, in cppreference order; the groups exist
+# only here, the files stay flat so URLs do not change when regrouping.
+nav = [
+  { "Home" = "index.md" },
+  { "Sorting" = [
+    "sorting/index.md",
+    "sorting/bubble-sort.md",
+  ] },
+  { "Algorithms library" = [
+    "algorithms-library/index.md",
+    { "Non-modifying" = [
+      "algorithms-library/find.md",
+    ] },
+    { "Sorting and related" = [
+      "algorithms-library/sort.md",
+    ] },
+  ] },
+]
 
 extra_css = [
   "https://unpkg.com/katex@0.16.22/dist/katex.min.css",
   "stylesheets/layout.css",
+  "stylesheets/sidebars.css",
   "stylesheets/algo-viz.css",
   "stylesheets/std.css",
 ]
@@ -40,6 +60,8 @@ features = [
   "navigation.top",
   "navigation.tracking",
   "search.highlight",
+  # Keep the current heading visible in a long table of contents.
+  "toc.follow",
 ]
 
 [project.theme.icon]
