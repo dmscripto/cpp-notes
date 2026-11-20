@@ -13,11 +13,14 @@ permissions:
 jobs:
   # Every C++ file that the site shows must compile and pass its tests.
   test-code:
-    runs-on: ubuntu-latest
+    # Pinned: the C++26 examples need GCC 15 or newer (g++ 15.2 here).
+    runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@v7
       - name: Compile and run C++ tests
-        run: bash scripts/test-code.sh
+        run: |
+          g++ --version | head -1
+          bash scripts/test-code.sh
 
   deploy:
     needs: test-code

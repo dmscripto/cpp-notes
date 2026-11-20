@@ -12,6 +12,7 @@ repo_name = "cpp-notes"
 extra_css = [
   "https://unpkg.com/katex@0.16.22/dist/katex.min.css",
   "stylesheets/algo-viz.css",
+  "stylesheets/std.css",
 ]
 extra_javascript = [
   "javascripts/katex.js",
@@ -91,6 +92,8 @@ pymdownx.smartsymbols = {}
 # check_paths makes the build fail if a referenced file is missing.
 pymdownx.snippets.base_path = ["code"]
 pymdownx.snippets.check_paths = true
+# Sections cut from inside a function lose their common indentation.
+pymdownx.snippets.dedent_subsections = true
 pymdownx.superfences.custom_fences = [
   { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" },
 ]

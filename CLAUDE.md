@@ -17,17 +17,23 @@ python -m venv .venv
 .venv\Scripts\python -m pip install -r requirements.txt   # one-time setup
 .venv\Scripts\zensical serve --dev-addr localhost:8011     # live preview
 .venv\Scripts\zensical build --clean                       # build into site/
-bash scripts/test-code.sh                                  # all C++ tests
+bash scripts/test-code.sh                                  # all C++ tests and examples
+bash scripts/test-code.sh code/algorithm/find              # only some paths
 ```
 
 - Port 8000 (the default) may be unavailable on this machine, hence 8011,
   which is also what `.claude/launch.json` uses. The site is served under
   `/cpp-notes/`; `/` redirects there.
-- `CXX=clang++ bash scripts/test-code.sh` runs the tests with Clang instead of g++.
-- One test file, with the same flags the script uses:
-  `g++ -std=c++20 -Wall -Wextra -Wpedantic -Werror -O1 -g -I code -o build/bubble_sort_test code/sorting/bubble_sort_test.cpp && ./build/bubble_sort_test`
-- Sanitizers are not available with MinGW, so they only run in CI (Ubuntu,
-  ASan + UBSan). `-Werror` is on everywhere.
+- The script compiles `*_test.cpp` as C++20 and `cppNN.cpp` with
+  `-std=c++NN`, with `-Wall -Wextra -Wpedantic -Werror`.
+- Use g++ (15.2 here). The C++26 examples need libstdc++ 15. Plain `clang++`
+  on this machine targets the MSVC STL, which lacks them, so
+  `CXX=clang++ bash scripts/test-code.sh` fails on `cpp26.cpp`; clang works
+  with `--target=x86_64-w64-mingw32`. `.clangd` sets that target and the
+  per-file standard for the editor.
+- Sanitizers are not available with MinGW, so they only run in CI (Ubuntu
+  26.04 with g++ 15, ASan + UBSan). The CI runner is pinned to `ubuntu-26.04`
+  for that compiler.
 
 ## How the pieces fit together
 
@@ -39,7 +45,26 @@ path fails the build). Headers mark named sections with
 `*_test.cpp` next to it: a plain `main` that returns non-zero on failure (no test
 framework). Articles show a simple version and a generic C++20 version
 (iterators + concepts) in content tabs, as `docs/sorting/bubble-sort.md` does.
-`compile_flags.txt` gives clangd `-std=c++20 -Icode`.
+`compile_flags.txt` gives clangd `-std=c++20 -Icode`; `.clangd` adds the rest.
+
+**The algorithms library section** (`docs/algorithms-library/`) has one page per
+standard algorithm and an overview `index.md` listing every algorithm.
+- **Examples.** Each page shows examples in "C++17" / "C++20" / "C++26" tabs. The
+  tabs are cumulative, so the C++26 tab also shows C++23 features, marked in
+  comments. The same tab labels on every page are linked by
+  `content.tabs.link`, so the reader's choice carries across pages.
+- **Example files.** Every tab is `code/algorithm/<name>/cppNN.cpp`, a complete
+  program. Its `example` section sits inside `main`; `dedent_subsections`
+  strips the indentation. The asserts after the section check the result
+  comments in the example.
+- **Untested code.** A feature no standard library ships yet, such as P3179
+  parallel `std::ranges::sort`, goes in a note in prose, never in tested code.
+- **Badges.** Standards are marked with `<span class="std cpp20">C++20</span>`
+  (`docs/stylesheets/std.css`).
+- **Overview tables** sit inside `<div class="std-index" markdown>`, which gives
+  them aligned columns. Algorithms that have a page are links there. Adding a
+  page means: copy `templates/algorithm.md`, add the three example files, and
+  link the name in the overview.
 
 **CI gates the deploy on the tests.** `.github/workflows/docs.yml` runs
 `test-code` and then `deploy` (build + upload to Pages) on pushes to `main`; pull
@@ -48,8 +73,10 @@ requests only run the tests. Re-running a failed `deploy` job fails with
 `gh workflow run docs.yml --ref main`.
 
 **Navigation comes from the folder structure.** There is no `nav` in
-`zensical.toml`; a folder's `index.md` is its section overview. New articles start
-from `templates/article.md`, which sits outside `docs/` so it is not published.
+`zensical.toml`; a folder's `index.md` is its section overview. The section title
+in the nav comes from the folder name, not from the index page's H1:
+`algorithms-library` becomes "Algorithms library". New articles start from
+`templates/article.md`, which sits outside `docs/` so it is not published.
 
 **Instant navigation swaps pages without a reload.** Custom scripts must
 (re)initialize through `document$.subscribe(...)`, not `DOMContentLoaded`. Both

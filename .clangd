@@ -1,0 +1,23 @@
+# Editor settings for clangd. Base flags come from compile_flags.txt.
+
+# On Windows clang defaults to the MSVC STL, which lacks some C++23/26
+# library features the examples use. Use MinGW's libstdc++ (the one g++
+# uses) instead.
+CompileFlags:
+  Add: [--target=x86_64-w64-mingw32]
+---
+# Examples are compiled with the standard in their name, like the tests do.
+If:
+  PathMatch: .*/cpp17\.cpp
+CompileFlags:
+  Add: [-std=c++17]
+---
+If:
+  PathMatch: .*/cpp23\.cpp
+CompileFlags:
+  Add: [-std=c++23]
+---
+If:
+  PathMatch: .*/cpp26\.cpp
+CompileFlags:
+  Add: [-std=c++26]

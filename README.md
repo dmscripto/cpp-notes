@@ -9,12 +9,15 @@ Live site: <https://dmscripto.github.io/cpp-notes/>
 
 ```text
 docs/                    site pages (Markdown)
+  algorithms-library/      one page per standard algorithm + overview
   javascripts/algo-viz.js  step-by-step algorithm visualizations
   javascripts/katex.js     math rendering
   stylesheets/algo-viz.css widget styles
-code/                    C++ code shown on the site, with *_test.cpp tests
-scripts/test-code.sh     compiles and runs every code/**/*_test.cpp
-templates/article.md     template for a new article (not published)
+  stylesheets/std.css      C++ standard badges and overview tables
+code/                    C++ code shown on the site: *_test.cpp tests and
+                         cppNN.cpp examples (code/algorithm/<name>/)
+scripts/test-code.sh     compiles and runs all tests and examples
+templates/               templates for new pages (not published)
 zensical.toml            site configuration
 .github/workflows/docs.yml  CI: test C++ code, then build and deploy the site
 ```
@@ -49,7 +52,23 @@ Run the preview server with live reload, then open <http://localhost:8000/cpp-no
 3. Add tests in `code/<section>/<name>_test.cpp` (a `main` that returns non-zero on failure).
 
 The navigation is generated from the folder structure, so new pages show up
-automatically. A folder's `index.md` becomes the section's overview page.
+automatically. A folder's `index.md` becomes the section's overview page, and
+the folder name becomes the section title (`algorithms-library` →
+"Algorithms library").
+
+## Add a page to the algorithms library
+
+1. Copy `templates/algorithm.md` to `docs/algorithms-library/<name>.md`.
+2. Write the examples as complete programs in `code/algorithm/<name>/cpp17.cpp`,
+   `cpp20.cpp` and `cpp26.cpp`. Wrap the part to show in
+   `// --8<-- [start:example]` and `// --8<-- [end:example]` (it may be inside
+   `main`; the indentation is removed) and check the results with `assert`
+   after it. Each file is compiled with the standard in its name.
+3. Turn the algorithm's name into a link in the table on
+   `docs/algorithms-library/index.md`.
+
+Mark standards with badges: `<span class="std cpp20">C++20</span>` (classes
+`cpp98`, `cpp11`, `cpp14`, `cpp17`, `cpp20`, `cpp23`, `cpp26`).
 
 ## Add a visualization
 
@@ -69,10 +88,12 @@ at the top of the file describes the format.
 
 ```powershell
 bash scripts/test-code.sh
+bash scripts/test-code.sh code/algorithm/find   # only some paths
 ```
 
-Uses `g++` by default; set `CXX=clang++` to use Clang. CI runs the same script on
-Ubuntu with AddressSanitizer and UndefinedBehaviorSanitizer enabled.
+Uses `g++` by default; set `CXX=clang++` to use Clang. The C++26 examples need
+GCC 15 or newer. CI runs the same script on Ubuntu 26.04 (g++ 15) with
+AddressSanitizer and UndefinedBehaviorSanitizer enabled.
 
 ## Publish to GitHub Pages
 

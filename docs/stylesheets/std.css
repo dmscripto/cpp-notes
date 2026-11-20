@@ -1,0 +1,62 @@
+/* Badges for the C++ standard a feature appeared in:
+     <span class="std cpp17">C++17</span>
+   Solid colors with white text read well on both the light ("default") and
+   the dark ("slate") color scheme. C++98 is muted so newer ones stand out. */
+.md-typeset .std {
+  display: inline-block;
+  padding: 0 0.55em;
+  border-radius: 1em;
+  background: var(--std-color, #6b7280);
+  color: #fff;
+  font-size: 0.85em;
+  font-weight: 700;
+  line-height: 1.6;
+  white-space: nowrap;
+  vertical-align: 0.05em;
+}
+
+.md-typeset .std.cpp98 { --std-color: #6b7280; }
+.md-typeset .std.cpp11 { --std-color: #2563eb; }
+.md-typeset .std.cpp14 { --std-color: #0e7490; }
+.md-typeset .std.cpp17 { --std-color: #15803d; }
+.md-typeset .std.cpp20 { --std-color: #7c3aed; }
+.md-typeset .std.cpp23 { --std-color: #c2410c; }
+.md-typeset .std.cpp26 { --std-color: #be185d; }
+
+/* Overview tables (<div class="std-index" markdown>): on wide screens all of
+   them get the same column widths, so the badges line up across sections.
+   On phones they keep the theme's default horizontal scrolling. */
+@media screen and (min-width: 60em) {
+  .md-typeset .std-index .md-typeset__table {
+    display: block;
+  }
+
+  .md-typeset .std-index table:not([class]) {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  .md-typeset .std-index th:nth-child(1) { width: 36%; }
+  .md-typeset .std-index th:nth-child(3),
+  .md-typeset .std-index th:nth-child(4) { width: 8.5em; }
+}
+
+.md-typeset .std-index th code {
+  white-space: nowrap;
+}
+
+/* On narrow screens the tables scroll anyway; keep names unbroken. */
+@media screen and (max-width: 59.9375em) {
+  .md-typeset .std-index td:first-child code {
+    white-space: nowrap;
+  }
+}
+
+/* Something that was removed from the standard. */
+.md-typeset .std.removed {
+  background: transparent;
+  color: var(--md-default-fg-color--light);
+  box-shadow: inset 0 0 0 1px currentColor;
+  font-weight: 400;
+}
