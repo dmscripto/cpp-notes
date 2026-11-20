@@ -19,9 +19,9 @@
   color: var(--md-code-hl-special-color, #d85a30);
 }
 
+/* Bars on top, code below at full width, so long code lines fit. */
 .algo-viz__stage {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   gap: 1em;
 }
 
