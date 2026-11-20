@@ -63,16 +63,6 @@ Every tab is a complete program compiled with that standard and checked in CI:
         ([P3179](https://wg21.link/P3179)). GCC 15's standard library does not
         have it yet, so it is not part of the tested example.
 
-## What changed in each standard
-
-| Standard                             | Change                                                                                        |
-| ------------------------------------ | --------------------------------------------------------------------------------------------- |
-| <span class="std cpp98">C++98</span> | `std::sort`, $O(N \log N)$ comparisons on average                                             |
-| <span class="std cpp11">C++11</span> | $O(N \log N)$ comparisons required in the worst case too                                      |
-| <span class="std cpp17">C++17</span> | Overloads that take an execution policy, such as `std::execution::par`                        |
-| <span class="std cpp20">C++20</span> | `std::ranges::sort`: takes a whole range and a projection. `std::sort` becomes `constexpr`    |
-| <span class="std cpp26">C++26</span> | `std::ranges::sort` takes an execution policy ([P3179](https://wg21.link/P3179)). `std::stable_sort` becomes `constexpr` too ([P2562](https://wg21.link/P2562)) |
-
 ## Pitfalls
 
 - **The comparator must be a strict weak ordering.** `comp(a, a)` must be

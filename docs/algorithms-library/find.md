@@ -49,17 +49,6 @@ Every tab is a complete program compiled with that standard and checked in CI:
 
     The comments mark what came in C++23 and what in C++26.
 
-## What changed in each standard
-
-| Standard                             | Change                                                                                                   |
-| ------------------------------------ | -------------------------------------------------------------------------------------------------------- |
-| <span class="std cpp98">C++98</span> | `std::find`, `std::find_if`                                                                              |
-| <span class="std cpp11">C++11</span> | `std::find_if_not`                                                                                       |
-| <span class="std cpp17">C++17</span> | Overloads that take an execution policy, such as `std::execution::par`                                   |
-| <span class="std cpp20">C++20</span> | `std::ranges::find`, `find_if`, `find_if_not`: take a whole range and a projection. All are `constexpr`  |
-| <span class="std cpp23">C++23</span> | `std::ranges::contains`; `std::ranges::find_last`, `find_last_if`, `find_last_if_not`                    |
-| <span class="std cpp26">C++26</span> | The value can be a braced list: `find(points, {2, 3})` ([P2248](https://wg21.link/P2248)). `std::ranges::find` takes an execution policy ([P3179](https://wg21.link/P3179)) |
-
 ## Pitfalls
 
 - **Not checking for `end()`.** Dereferencing the end iterator is undefined

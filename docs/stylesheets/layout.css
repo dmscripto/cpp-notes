@@ -1,0 +1,92 @@
+/* A denser layout than the theme default: wider content, narrower sidebars,
+   tighter text. Loaded after the theme, so rules of equal specificity win.
+   Theme values are noted in the comments. */
+
+/* The theme scales the root font up on wide screens (137.5% from 100em,
+   150% from 125em). Keep it, so a wide screen shows more, not bigger. */
+@media screen and (min-width: 100em) {
+  html {
+    font-size: 125%;
+  }
+}
+
+/* Use more of a wide screen (theme: 61rem). */
+.md-grid {
+  max-width: 76rem;
+}
+
+.md-main__inner {
+  margin-top: 0.8rem; /* theme: 1.5rem */
+}
+
+/* Narrower sidebars (theme: 12.1rem). Only where they sit beside the
+   content: below 76.25em the navigation is a drawer and keeps its width. */
+@media screen and (min-width: 76.25em) {
+  .md-sidebar--primary {
+    width: 10.5rem;
+  }
+
+  [dir="ltr"] .md-sidebar--primary:not([hidden]) ~ .md-content > .md-content__inner {
+    margin-left: 1rem; /* theme: 1.2rem */
+  }
+}
+
+@media screen and (min-width: 60em) {
+  .md-sidebar--secondary {
+    width: 10rem;
+  }
+
+  [dir="ltr"] .md-sidebar--secondary:not([hidden]) ~ .md-content > .md-content__inner {
+    margin-right: 1rem; /* theme: 1.2rem */
+  }
+}
+
+/* Text: 14px instead of 15px, line height 1.6 instead of 1.8. */
+.md-typeset {
+  font-size: 0.7rem;
+  line-height: 1.6;
+}
+
+.md-typeset h1 {
+  margin-bottom: 0.6em; /* theme: 1.25em */
+}
+
+.md-typeset h2 {
+  margin: 1.4em 0 0.5em; /* theme: 1.6em 0 0.64em */
+  font-size: 1.4em; /* theme: 1.5em */
+}
+
+.md-typeset h3 {
+  margin: 1.2em 0 0.4em; /* theme: 1.6em 0 0.8em */
+  font-size: 1.15em; /* theme: 1.25em */
+}
+
+.md-typeset p,
+.md-typeset ul,
+.md-typeset ol,
+.md-typeset pre,
+.md-typeset blockquote,
+.md-typeset dl,
+.md-typeset figure {
+  margin-top: 0.7em; /* theme: 1em */
+  margin-bottom: 0.7em;
+}
+
+.md-typeset li {
+  margin-bottom: 0.25em;
+}
+
+.md-typeset pre > code {
+  padding: 0.6em 1em; /* theme: 0.82em 1.25em */
+}
+
+.md-typeset .admonition,
+.md-typeset details {
+  margin: 1em 0;
+}
+
+/* Tables: less padding around cells (theme: 0.9375em 1.25em). */
+.md-typeset table:not([class]) th,
+.md-typeset table:not([class]) td {
+  padding: 0.5em 0.9em;
+}

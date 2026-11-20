@@ -83,6 +83,16 @@ in the nav comes from the folder name, not from the index page's H1:
 `docs/javascripts/katex.js` and `algo-viz.js` do this. `algo-viz.js` also stops
 timers of widgets from the previous page.
 
+**Layout is denser than the theme default.** `docs/stylesheets/layout.css`
+holds these overrides; their comments give the theme's original values:
+- the page is up to 76rem wide;
+- the sidebars are narrower;
+- the root font no longer grows on wide screens;
+- body text is 14px with line height 1.6;
+- margins and table padding are tighter.
+
+The theme is Zensical's "modern" variant (`site/assets/stylesheets/modern/`).
+
 **Math and diagrams.** `pymdownx.arithmatex` (generic mode) turns `$...$` into
 `\(...\)`, which KaTeX (from unpkg, pinned to 0.16.22) renders client-side.
 Mermaid fences are rendered by the theme itself. Prefer compact `flowchart LR`

@@ -48,13 +48,6 @@ Every tab is a complete program compiled with that standard and checked in CI:
 
     The comments mark what came in C++23 and what in C++26.
 
-## What changed in each standard
-
-| Standard                             | Change           |
-| ------------------------------------ | ---------------- |
-| <span class="std cpp98">C++98</span> | `std::name`      |
-| <span class="std cpp20">C++20</span> | `std::ranges::name` |
-
 ## Pitfalls
 
 - **A typical mistake.** Why it happens and how to avoid it.

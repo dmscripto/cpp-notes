@@ -12,6 +12,7 @@ docs/                    site pages (Markdown)
   algorithms-library/      one page per standard algorithm + overview
   javascripts/algo-viz.js  step-by-step algorithm visualizations
   javascripts/katex.js     math rendering
+  stylesheets/layout.css   denser layout: wider content, narrower sidebars
   stylesheets/algo-viz.css widget styles
   stylesheets/std.css      C++ standard badges and overview tables
 code/                    C++ code shown on the site: *_test.cpp tests and

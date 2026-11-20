@@ -11,6 +11,7 @@ repo_name = "cpp-notes"
 
 extra_css = [
   "https://unpkg.com/katex@0.16.22/dist/katex.min.css",
+  "stylesheets/layout.css",
   "stylesheets/algo-viz.css",
   "stylesheets/std.css",
 ]
