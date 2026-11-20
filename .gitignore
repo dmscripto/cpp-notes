@@ -1,0 +1,11 @@
+# Python virtual environment
+.venv/
+
+# Build output and caches
+site/
+.cache/
+
+# Compiled C++ test binaries
+build/
+*.exe
+*.out

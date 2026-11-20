@@ -1,0 +1,5 @@
+# Normalize line endings in the repository.
+* text=auto
+
+# Shell scripts must keep LF, or bash fails on "\r".
+*.sh text eol=lf

@@ -1,0 +1,173 @@
+/* Styles for docs/javascripts/algo-viz.js. Mid-tone colors read well on both
+   the light ("default") and dark ("slate") color schemes. */
+.algo-viz {
+  --algo-viz-bar: #8a8987;
+  --algo-viz-compare: #7f77dd;
+  --algo-viz-swap: #d85a30;
+  --algo-viz-select: #ba7517;
+  --algo-viz-done: #1d9e75;
+  --algo-viz-border: var(--md-default-fg-color--lightest, rgba(0, 0, 0, 0.07));
+
+  margin: 1.5em 0;
+  padding: 1em;
+  border: 1px solid var(--algo-viz-border);
+  border-radius: 0.4rem;
+  font-size: 0.75rem;
+}
+
+.algo-viz--error {
+  color: var(--md-code-hl-special-color, #d85a30);
+}
+
+.algo-viz__stage {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1em;
+}
+
+.algo-viz__bars {
+  display: flex;
+  align-items: stretch;
+  gap: 4px;
+  height: 11rem;
+}
+
+.algo-viz__col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* The track takes all height above the label; bars are positioned inside it
+   so that their percentage heights are exact (flex shrinking would squash
+   tall bars to the same height). */
+.algo-viz__track {
+  position: relative;
+  flex: 1;
+}
+
+.algo-viz__bar {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: var(--algo-viz-bar);
+  border-radius: 3px 3px 0 0;
+  transition: height 0.25s ease, background-color 0.2s ease;
+}
+
+.algo-viz__label {
+  margin-top: 3px;
+  text-align: center;
+  font-size: 0.65rem;
+  color: var(--md-default-fg-color--light);
+  font-variant-numeric: tabular-nums;
+}
+
+.algo-viz__bar.is-compare,
+.algo-viz__swatch.is-compare { background: var(--algo-viz-compare); }
+.algo-viz__bar.is-swap,
+.algo-viz__swatch.is-swap { background: var(--algo-viz-swap); }
+.algo-viz__bar.is-select,
+.algo-viz__swatch.is-select { background: var(--algo-viz-select); }
+.algo-viz__bar.is-done,
+.algo-viz__swatch.is-done { background: var(--algo-viz-done); }
+
+.algo-viz__code {
+  align-self: start;
+  overflow-x: auto;
+  padding: 0.6em 0;
+  border-radius: 0.2rem;
+  background: var(--md-code-bg-color);
+  color: var(--md-code-fg-color);
+  font-family: var(--md-code-font-family, monospace);
+  font-size: 0.7rem;
+}
+
+.algo-viz__line {
+  padding: 0 0.9em;
+  line-height: 1.8;
+  white-space: pre;
+}
+
+.algo-viz__line.is-active {
+  background: var(--md-code-hl-color--light, rgba(127, 119, 221, 0.15));
+  box-shadow: inset 3px 0 0 var(--md-accent-fg-color);
+}
+
+.algo-viz__status {
+  min-height: 1.6em;
+  margin: 0.8em 0 0.6em;
+  color: var(--md-default-fg-color--light);
+}
+
+.algo-viz__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.algo-viz__controls button {
+  padding: 0.3em 0.9em;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 0.2rem;
+  background: transparent;
+  color: var(--md-default-fg-color);
+  font: inherit;
+  cursor: pointer;
+}
+
+.algo-viz__controls button:hover {
+  border-color: var(--md-accent-fg-color);
+  color: var(--md-accent-fg-color);
+}
+
+.algo-viz__controls button:focus-visible,
+.algo-viz__speed input:focus-visible {
+  outline: 2px solid var(--md-accent-fg-color);
+  outline-offset: 1px;
+}
+
+.algo-viz__speed {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  margin-left: 0.5em;
+  color: var(--md-default-fg-color--light);
+}
+
+.algo-viz__speed input {
+  width: 6rem;
+  accent-color: var(--md-accent-fg-color);
+}
+
+.algo-viz__counters {
+  margin-left: auto;
+  color: var(--md-default-fg-color--light);
+  font-variant-numeric: tabular-nums;
+}
+
+.algo-viz__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2em;
+  margin-top: 0.8em;
+  color: var(--md-default-fg-color--light);
+  font-size: 0.65rem;
+}
+
+.algo-viz__swatch {
+  display: inline-block;
+  width: 0.7em;
+  height: 0.7em;
+  margin-right: 0.4em;
+  border-radius: 2px;
+  vertical-align: -0.05em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .algo-viz__bar { transition: none; }
+}

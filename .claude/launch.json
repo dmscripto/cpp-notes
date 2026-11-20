@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "zensical",
+      "runtimeExecutable": ".venv/Scripts/zensical.exe",
+      "runtimeArgs": ["serve", "--dev-addr", "localhost:8011"],
+      "port": 8011,
+      "autoPort": false
+    }
+  ]
+}
