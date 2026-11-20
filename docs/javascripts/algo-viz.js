@@ -11,7 +11,7 @@
  *   data-values  fixed comma-separated input, e.g. "5,1,4,2,8" (overrides data-size)
  *
  * Adding an algorithm = adding an entry to ALGORITHMS:
- *   code   the C++ lines shown next to the bars
+ *   code   the C++ lines shown under the bars
  *   steps  a generator that sorts `a` in place and yields one object per step:
  *            line    index into `code` to highlight (-1 for none)
  *            active  indices of the bars to highlight
